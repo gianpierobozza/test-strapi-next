@@ -812,13 +812,33 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
           localized: true;
         };
       }>;
-    TopHero: Attribute.Component<'components.hero'> &
+    HomePageSeo: Attribute.Component<'seo.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
-    Content: Attribute.Component<'components.card', true> &
+    Header: Attribute.Component<'page-elements.home-header'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    HomepageTopCards: Attribute.Component<'page-elements.card', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    HomepageDynamicCards: Attribute.DynamicZone<
+      ['blocks.dynamic-cards-config', 'page-elements.card']
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    HomepageBottomCards: Attribute.Component<'page-elements.card', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
@@ -865,13 +885,39 @@ export interface ApiLandingLanding extends Schema.CollectionType {
     };
   };
   attributes: {
-    Content: Attribute.Component<'components.card', true> &
+    LandingSeo: Attribute.Component<'seo.seo'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;
         };
       }>;
     slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    LandingHero: Attribute.Component<'page-elements.hero'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    LandingTopCards: Attribute.Component<'page-elements.card', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    LandingDynamicCards: Attribute.DynamicZone<
+      ['blocks.dynamic-cards-config', 'page-elements.card']
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    LandingBottomCards: Attribute.Component<'page-elements.card', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

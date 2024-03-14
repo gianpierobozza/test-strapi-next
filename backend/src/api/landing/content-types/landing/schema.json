@@ -16,15 +16,15 @@
     }
   },
   "attributes": {
-    "Content": {
+    "LandingSeo": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "components.card"
+      "component": "seo.seo"
     },
     "slug": {
       "pluginOptions": {
@@ -33,6 +33,48 @@
         }
       },
       "type": "string"
+    },
+    "LandingHero": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page-elements.hero"
+    },
+    "LandingTopCards": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page-elements.card"
+    },
+    "LandingDynamicCards": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "blocks.dynamic-cards-config",
+        "page-elements.card"
+      ]
+    },
+    "LandingBottomCards": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page-elements.card"
     }
   }
 }

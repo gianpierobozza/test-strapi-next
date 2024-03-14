@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_blocks_dynamic_cards_configs",
+  "info": {
+    "displayName": "DynamicCardsConfig",
+    "icon": "cog",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "rows": {
+      "type": "integer",
+      "max": 3,
+      "min": 1
+    },
+    "cols": {
+      "type": "integer",
+      "max": 3,
+      "min": 1
+    },
+    "gridFlow": {
+      "type": "enumeration",
+      "enum": [
+        "row",
+        "col",
+        "dense",
+        "rowDense",
+        "colDense"
+      ]
+    }
+  }
+}

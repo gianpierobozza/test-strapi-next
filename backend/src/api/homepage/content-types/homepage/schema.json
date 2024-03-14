@@ -25,7 +25,7 @@
       "type": "string",
       "required": true
     },
-    "TopHero": {
+    "HomePageSeo": {
       "type": "component",
       "repeatable": false,
       "pluginOptions": {
@@ -33,9 +33,19 @@
           "localized": true
         }
       },
-      "component": "components.hero"
+      "component": "seo.seo"
     },
-    "Content": {
+    "Header": {
+      "type": "component",
+      "repeatable": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page-elements.home-header"
+    },
+    "HomepageTopCards": {
       "type": "component",
       "repeatable": true,
       "pluginOptions": {
@@ -43,7 +53,29 @@
           "localized": true
         }
       },
-      "component": "components.card"
+      "component": "page-elements.card"
+    },
+    "HomepageDynamicCards": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "dynamiczone",
+      "components": [
+        "blocks.dynamic-cards-config",
+        "page-elements.card"
+      ]
+    },
+    "HomepageBottomCards": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "page-elements.card"
     }
   }
 }

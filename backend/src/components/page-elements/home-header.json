@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_page_elements_home_headers",
+  "info": {
+    "displayName": "Home Header",
+    "icon": "arrowUp",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "slogan": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "homeCTA": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.link"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "justify",
+        "center",
+        "start",
+        "end"
+      ]
+    }
+  }
+}

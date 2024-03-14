@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_page_elements_heroes",
+  "info": {
+    "displayName": "Hero",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "string"
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "media": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.media"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "text-start",
+        "text-end"
+      ]
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.link"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_seo_seos",
+  "info": {
+    "displayName": "Seo",
+    "icon": "code"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "string"
+    },
+    "shareImageAlt": {
+      "type": "string"
+    },
+    "shareImageMedia": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "keywords": {
+      "type": "string"
+    },
+    "preventingIndex": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

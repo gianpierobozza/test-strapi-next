@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blocks_media",
+  "info": {
+    "displayName": "Media",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "medium": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "start (top)",
+        "end (bottom)"
+      ]
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_blocks_links",
+  "info": {
+    "displayName": "Link",
+    "icon": "code",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "default",
+        "button",
+        "icon",
+        "image"
+      ]
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "outline"
+      ]
+    },
+    "medium": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

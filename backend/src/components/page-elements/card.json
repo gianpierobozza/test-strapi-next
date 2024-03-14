@@ -1,0 +1,59 @@
+{
+  "collectionName": "components_page_elements_cards",
+  "info": {
+    "displayName": "Card",
+    "icon": "alien",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "layout": {
+      "type": "enumeration",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    "media": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.media"
+    },
+    "cta": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.link"
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "text-start",
+        "text-end"
+      ]
+    },
+    "rowSpan": {
+      "type": "integer",
+      "max": 3,
+      "min": 0,
+      "default": 0
+    },
+    "colSpan": {
+      "type": "integer",
+      "max": 3,
+      "min": 0,
+      "default": 0
+    },
+    "title": {
+      "type": "string"
+    },
+    "subheading": {
+      "type": "string"
+    }
+  }
+}
