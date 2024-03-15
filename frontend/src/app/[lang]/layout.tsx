@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang={params.lang}>
-      <body>
+      <body className="bg-slate-100">
         <header className="m-4">
           <LocaleSwitcher />
         </header>

@@ -9,7 +9,7 @@ export default async function Homepage({
   params: { lang: Locale };
 }) {
   const homeData = await getProps(lang);
-  console.log(JSON.stringify(homeData, null, 2));
+  //console.log(JSON.stringify(homeData, null, 2));
 
   const config = homeData.data.attributes.HomepageDynamicCards.find(
     (item: any) => item.__component === "blocks.dynamic-cards-config"
@@ -37,7 +37,7 @@ export default async function Homepage({
         <p>{`${homeData.data.attributes.Header.description}`}</p>
       </div>
 
-      <div className="m-4">
+      <div className="m-4 bg-white p-6 lg:p-12 rounded-xl shadow-soft-48 overflow-hidden">
         {homeData.data.attributes.HomepageTopCards.map(
           (card: any, index: number) => (
             <div key={index}>
@@ -75,14 +75,18 @@ export default async function Homepage({
 
       <div className="m-4">
         <div
-          className={`grid grid-rows-${config.rows} grid-cols-${config.cols} grid-flow-${config.gridFlow}`}
+          className={`grid grid-rows-${config.rows} grid-cols-${config.cols} grid-flow-${config.gridFlow} gap-8`}
         >
           {cards.map((card: any, index: number) => {
             return (
-              <div key={index}>
+              <div
+                className="bg-white p-6 lg:p-8 h-full rounded-xl shadow-soft-48 overflow-hidden"
+                key={index}
+              >
                 {card.media.map((media: any, index: number) => {
                   return (
                     <img
+                      key={index}
                       src={`http://localhost:1337${media.medium.data.attributes.url}`}
                     />
                   );
@@ -96,7 +100,7 @@ export default async function Homepage({
         </div>
       </div>
 
-      <div className="m-4">
+      <div className="m-4 bg-white p-6 lg:p-12 rounded-xl shadow-soft-48 overflow-hidden">
         {homeData.data.attributes.HomepageBottomCards.map(
           (card: any, index: number) => (
             <div key={index}>
