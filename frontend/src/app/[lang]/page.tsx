@@ -25,6 +25,7 @@ export default async function Homepage({
         <h1>Metadata</h1>
         <p>{`metaTitle: ${homeData.data.attributes.HomePageSeo.metaTitle}`}</p>
         <p>{`metaDescription: ${homeData.data.attributes.HomePageSeo.metaDescription}`}</p>
+        <p>{`shareImage`}<img src={`http://localhost:1337${homeData.data.attributes.HomePageSeo.shareImageMedia.data.attributes.url}`} /></p>
         <p>{`shareImageAlt: ${homeData.data.attributes.HomePageSeo.shareImageAlt}`}</p>
         <p>{`keywords: ${homeData.data.attributes.HomePageSeo.keywords}`}</p>
         <p>{`preventingIndex: ${homeData.data.attributes.HomePageSeo.preventingIndex}`}</p>
@@ -180,7 +181,7 @@ export default async function Homepage({
 async function getProps(lang: Locale) {
   /*
     http://localhost:1337/api/homepage?
-    populate[HomePageSeo][populate][0]=media.medium&
+    populate[HomePageSeo][populate]=*&
     populate[Header][populate][0]=homeCTA.medium&
     populate[HomepageTopCards][populate][0]=media.medium&
     populate[HomepageTopCards][populate][1]=cta.medium&
@@ -192,7 +193,7 @@ async function getProps(lang: Locale) {
   const query = qs.stringify({
     populate: {
       HomePageSeo: {
-        populate: ["media.medium"],
+        populate: "*",
       },
       Header: {
         populate: ["homeCTA.medium"],
