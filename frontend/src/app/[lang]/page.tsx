@@ -9,7 +9,7 @@ export default async function Homepage({
   params: { lang: Locale };
 }) {
   const homeData = await getProps(lang);
-  console.log(JSON.stringify(homeData, null, 2))
+  console.log(JSON.stringify(homeData, null, 2));
 
   const config = homeData.data.attributes.HomepageDynamicCards.find(
     (item: any) => item.__component === "blocks.dynamic-cards-config"
@@ -38,34 +38,133 @@ export default async function Homepage({
       </div>
 
       <div className="m-4">
-        {homeData.data.attributes.HomepageTopCards.map((card: any, index: number) => (
-          <div key={index}>
-            <h1>{card.heading}</h1>
-            <Markdown>{homeData.data.attributes.HomepageTopCards[0].text}</Markdown>
-          </div>
-        ))}
+        {homeData.data.attributes.HomepageTopCards.map(
+          (card: any, index: number) => (
+            <div key={index}>
+              <div className="text-center">{card.title}</div>
+              <div className="grid lg:grid-cols-2 gap-8">
+                <div
+                  className={`flex flex-col gap-4 order-${
+                    card.style === "text-start" ? "1" : "2"
+                  }`}
+                >
+                  <h1>{card.heading}</h1>
+                  <h2>{card.subheading}</h2>
+                  <Markdown>{card.text}</Markdown>
+                </div>
+                <div
+                  className={`rounded-lg overflow-hidden order-${
+                    card.style === "text-start" ? "2" : "1"
+                  }`}
+                >
+                  {card.media.map((media: any, index: number) => {
+                    return (
+                      <img
+                        key={index}
+                        className="w-full h-full"
+                        src={`http://localhost:1337${media.medium.data.attributes.url}`}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )
+        )}
       </div>
 
       <div className="m-4">
-        <div className={`grid grid-rows-${config.rows} grid-cols-${config.cols}`}>
+        <div
+          className={`grid grid-rows-${config.rows} grid-cols-${config.cols} grid-flow-${config.gridFlow}`}
+        >
           {cards.map((card: any, index: number) => {
             return (
               <div key={index}>
+                {card.media.map((media: any, index: number) => {
+                  return (
+                    <img
+                      src={`http://localhost:1337${media.medium.data.attributes.url}`}
+                    />
+                  );
+                })}
                 <h1>{card.heading}</h1>
-                <h1>{card.subheading}</h1>
+                <h2>{card.subheading}</h2>
                 <Markdown>{card.text}</Markdown>
               </div>
-            )
+            );
           })}
         </div>
+      </div>
+
+      <div className="m-4">
+        {homeData.data.attributes.HomepageBottomCards.map(
+          (card: any, index: number) => (
+            <div key={index}>
+              <div className="text-center">{card.title}</div>
+              <div className="grid lg:grid-cols-2 gap-8">
+                <div
+                  className={`flex flex-col gap-4 order-${
+                    card.style === "text-start" ? "1" : "2"
+                  }`}
+                >
+                  <h1>{card.heading}</h1>
+                  <h2>{card.subheading}</h2>
+                  <Markdown>{card.text}</Markdown>
+                </div>
+                <div
+                  className={`rounded-lg overflow-hidden order-${
+                    card.style === "text-start" ? "2" : "1"
+                  }`}
+                >
+                  {card.media.map((media: any, index: number) => {
+                    return (
+                      <img
+                        key={index}
+                        className="w-full h-full"
+                        src={`http://localhost:1337${media.medium.data.attributes.url}`}
+                      />
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          )
+        )}
       </div>
     </div>
   );
 }
 
 async function getProps(lang: Locale) {
+  /*
+    http://localhost:1337/api/homepage?
+    populate[HomePageSeo][populate][0]=media.medium&
+    populate[Header][populate][0]=homeCTA.medium&
+    populate[HomepageTopCards][populate][0]=media.medium&
+    populate[HomepageTopCards][populate][1]=cta.medium&
+    populate[HomepageDynamicCards][populate][0]=media.medium&
+    populate[HomepageDynamicCards][populate][1]=cta.medium&
+    populate[HomepageBottomCards][populate][0]=media.medium&
+    populate[HomepageBottomCards][populate][1]=cta.medium 
+  */
   const query = qs.stringify({
-    populate: "*",
+    populate: {
+      HomePageSeo: {
+        populate: ["media.medium"],
+      },
+      Header: {
+        populate: ["homeCTA.medium"],
+      },
+      HomepageTopCards: {
+        populate: ["media.medium", "cta.medium"],
+      },
+      HomepageDynamicCards: {
+        populate: ["media.medium", "cta.medium"],
+      },
+      HomepageBottomCards: {
+        populate: ["media.medium", "cta.medium"],
+      },
+    },
     locale: lang,
   });
   return await fetchAPI("/homepage?" + query);

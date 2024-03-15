@@ -113,3 +113,10 @@ exports
 dist
 build
 .strapi-updater.json
+
+############################
+# Swagger auto-generated files
+############################
+
+src/extensions/documentation/documentation
+src/extensions/documentation/public
