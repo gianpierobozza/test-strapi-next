@@ -362,6 +362,165 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiHomepageHomepage extends Schema.SingleType {
+  collectionName: 'homepages';
+  info: {
+    singularName: 'homepage';
+    pluralName: 'homepages';
+    displayName: 'Homepage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    slug: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    HomePageSeo: Attribute.Component<'seo.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Header: Attribute.Component<'page-elements.home-header'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    HomepageTopCards: Attribute.Component<'page-elements.card', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    HomepageDynamicCards: Attribute.DynamicZone<
+      ['blocks.dynamic-cards-config', 'page-elements.card']
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    HomepageBottomCards: Attribute.Component<'page-elements.card', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::homepage.homepage',
+      'oneToMany',
+      'api::homepage.homepage'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiLandingLanding extends Schema.CollectionType {
+  collectionName: 'landings';
+  info: {
+    singularName: 'landing';
+    pluralName: 'landings';
+    displayName: 'Landing';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    LandingSeo: Attribute.Component<'seo.seo'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    slug: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    LandingHero: Attribute.Component<'page-elements.hero'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    LandingTopCards: Attribute.Component<'page-elements.card', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    LandingDynamicCards: Attribute.DynamicZone<
+      ['blocks.dynamic-cards-config', 'page-elements.card']
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    LandingBottomCards: Attribute.Component<'page-elements.card', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::landing.landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::landing.landing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::landing.landing',
+      'oneToMany',
+      'api::landing.landing'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -788,165 +947,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomepageHomepage extends Schema.SingleType {
-  collectionName: 'homepages';
-  info: {
-    singularName: 'homepage';
-    pluralName: 'homepages';
-    displayName: 'Homepage';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    slug: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    HomePageSeo: Attribute.Component<'seo.seo'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    Header: Attribute.Component<'page-elements.home-header'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    HomepageTopCards: Attribute.Component<'page-elements.card', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    HomepageDynamicCards: Attribute.DynamicZone<
-      ['blocks.dynamic-cards-config', 'page-elements.card']
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    HomepageBottomCards: Attribute.Component<'page-elements.card', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::homepage.homepage',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::homepage.homepage',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::homepage.homepage',
-      'oneToMany',
-      'api::homepage.homepage'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiLandingLanding extends Schema.CollectionType {
-  collectionName: 'landings';
-  info: {
-    singularName: 'landing';
-    pluralName: 'landings';
-    displayName: 'Landing';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    LandingSeo: Attribute.Component<'seo.seo'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    slug: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    LandingHero: Attribute.Component<'page-elements.hero'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    LandingTopCards: Attribute.Component<'page-elements.card', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    LandingDynamicCards: Attribute.DynamicZone<
-      ['blocks.dynamic-cards-config', 'page-elements.card']
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    LandingBottomCards: Attribute.Component<'page-elements.card', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::landing.landing',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::landing.landing',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::landing.landing',
-      'oneToMany',
-      'api::landing.landing'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -957,6 +957,8 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::homepage.homepage': ApiHomepageHomepage;
+      'api::landing.landing': ApiLandingLanding;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -965,8 +967,6 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::homepage.homepage': ApiHomepageHomepage;
-      'api::landing.landing': ApiLandingLanding;
     }
   }
 }

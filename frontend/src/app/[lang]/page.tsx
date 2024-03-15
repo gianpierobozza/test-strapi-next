@@ -27,14 +27,26 @@ export default async function Homepage({
         <p>{`metaDescription: ${homeData.data.attributes.HomePageSeo.metaDescription}`}</p>
         <p>{`shareImageAlt: ${homeData.data.attributes.HomePageSeo.shareImageAlt}`}</p>
         <p>{`keywords: ${homeData.data.attributes.HomePageSeo.keywords}`}</p>
-        <p>{`keywords: ${homeData.data.attributes.HomePageSeo.preventingIndex}`}</p>
+        <p>{`preventingIndex: ${homeData.data.attributes.HomePageSeo.preventingIndex}`}</p>
       </div>
 
+      {/* text-center */}
       <div className={`m-4 text-${homeData.data.attributes.Header.style}`}>
         <h1>{`${homeData.data.attributes.Header.heading}`}</h1>
         <h2>{`${homeData.data.attributes.Header.subheading}`}</h2>
         <p>{`${homeData.data.attributes.Header.slogan}`}</p>
         <p>{`${homeData.data.attributes.Header.description}`}</p>
+        {homeData.data.attributes.Header.homeCTA && (
+          <a href={homeData.data.attributes.Header.homeCTA.action}>
+            {homeData.data.attributes.Header.homeCTA.type === "button" ? (
+              <button className="btn btn-large btn-filled">
+                {homeData.data.attributes.Header.homeCTA.text}
+              </button>
+            ) : (
+              homeData.data.attributes.Header.homeCTA.text
+            )}
+          </a>
+        )}
       </div>
 
       <div className="m-4 bg-white p-6 lg:p-12 rounded-xl shadow-soft-48 overflow-hidden">
@@ -51,6 +63,19 @@ export default async function Homepage({
                   <h1>{card.heading}</h1>
                   <h2>{card.subheading}</h2>
                   <Markdown>{card.text}</Markdown>
+                  {card.cta && (
+                    <div className="mt-auto">
+                      <a href={card.cta.action}>
+                        {card.cta.type === "button" ? (
+                          <button className="btn btn-large btn-filled">
+                            {card.cta.text}
+                          </button>
+                        ) : (
+                          card.cta.text
+                        )}
+                      </a>
+                    </div>
+                  )}
                 </div>
                 <div
                   className={`rounded-lg overflow-hidden order-${
@@ -114,6 +139,19 @@ export default async function Homepage({
                   <h1>{card.heading}</h1>
                   <h2>{card.subheading}</h2>
                   <Markdown>{card.text}</Markdown>
+                  {card.cta && (
+                    <div className="mt-auto">
+                      <a href={card.cta.action}>
+                        {card.cta.type === "button" ? (
+                          <button className="btn btn-large btn-filled">
+                            {card.cta.text}
+                          </button>
+                        ) : (
+                          card.cta.text
+                        )}
+                      </a>
+                    </div>
+                  )}
                 </div>
                 <div
                   className={`rounded-lg overflow-hidden order-${

@@ -42,6 +42,7 @@ export interface BlocksLink extends Schema.Component {
     type: Attribute.Enumeration<['default', 'button', 'icon', 'image']>;
     style: Attribute.Enumeration<['primary', 'secondary', 'outline']>;
     medium: Attribute.Media;
+    action: Attribute.String;
   };
 }
 
