@@ -1,0 +1,11 @@
+{
+    "name": "test-strapi",
+    "short_name": "test-strapi",
+    "description": "Strapi CMS Test",
+    "icons": [
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "start_url": "/",
+    "display": "standalone"
+  }

@@ -24,6 +24,7 @@ export function middleware(request: NextRequest) {
   if (
     [
       "/manifest.json",
+      "/favicon.ico",
       // Your other files in `public`
     ].includes(pathname)
   ) return;
