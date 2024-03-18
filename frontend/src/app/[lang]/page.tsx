@@ -20,17 +20,25 @@ export default async function Homepage({
   );
 
   return (
-    <div className="container">
+    <div className="items-center">
+
+      {/* metadata */}
       <div className="m-4">
         <h1>Metadata</h1>
         <p>{`metaTitle: ${homeData.data.attributes.HomePageSeo.metaTitle}`}</p>
         <p>{`metaDescription: ${homeData.data.attributes.HomePageSeo.metaDescription}`}</p>
-        <p>{`shareImage`}<img src={`http://localhost:1337${homeData.data.attributes.HomePageSeo.shareImageMedia.data.attributes.url}`} /></p>
+        <p>
+          {`shareImage`}
+          <img
+            src={`http://localhost:1337${homeData.data.attributes.HomePageSeo.shareImageMedia.data.attributes.url}`}
+          />
+        </p>
         <p>{`shareImageAlt: ${homeData.data.attributes.HomePageSeo.shareImageAlt}`}</p>
         <p>{`keywords: ${homeData.data.attributes.HomePageSeo.keywords}`}</p>
         <p>{`preventingIndex: ${homeData.data.attributes.HomePageSeo.preventingIndex}`}</p>
       </div>
 
+      {/* header */}
       {/* text-center */}
       <div className={`m-4 text-${homeData.data.attributes.Header.style}`}>
         <h1>{`${homeData.data.attributes.Header.heading}`}</h1>
@@ -50,55 +58,58 @@ export default async function Homepage({
         )}
       </div>
 
-      <div className="m-4 bg-white p-6 lg:p-12 rounded-xl shadow-soft-48 overflow-hidden">
-        {homeData.data.attributes.HomepageTopCards.map(
-          (card: any, index: number) => (
-            <div key={index}>
-              <div className="text-center">{card.title}</div>
-              <div className="grid lg:grid-cols-2 gap-8">
-                <div
-                  className={`flex flex-col gap-4 order-${
-                    card.style === "text-start" ? "1" : "2"
-                  }`}
-                >
-                  <h1>{card.heading}</h1>
-                  <h2>{card.subheading}</h2>
-                  <Markdown>{card.text}</Markdown>
-                  {card.cta && (
-                    <div className="mt-auto">
-                      <a href={card.cta.action}>
-                        {card.cta.type === "button" ? (
-                          <button className="btn btn-large btn-filled">
-                            {card.cta.text}
-                          </button>
-                        ) : (
-                          card.cta.text
-                        )}
-                      </a>
-                    </div>
-                  )}
-                </div>
-                <div
-                  className={`rounded-lg overflow-hidden order-${
-                    card.style === "text-start" ? "2" : "1"
-                  }`}
-                >
-                  {card.media.map((media: any, index: number) => {
-                    return (
-                      <img
-                        key={index}
-                        className="w-full h-full"
-                        src={`http://localhost:1337${media.medium.data.attributes.url}`}
-                      />
-                    );
-                  })}
-                </div>
+      {/* top cards */}
+      {homeData.data.attributes.HomepageTopCards.map(
+        (card: any, index: number) => (
+          <div
+            key={index}
+            className="m-4 bg-white p-6 lg:p-12 rounded-xl shadow-soft-48 overflow-hidden"
+          >
+            <div className="text-center">{card.title}</div>
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div
+                className={`flex flex-col gap-4 order-${
+                  card.style === "text-start" ? "1" : "2"
+                }`}
+              >
+                <h1>{card.heading}</h1>
+                <h2>{card.subheading}</h2>
+                <Markdown>{card.text}</Markdown>
+                {card.cta && (
+                  <div className="mt-auto">
+                    <a href={card.cta.action}>
+                      {card.cta.type === "button" ? (
+                        <button className="btn btn-large btn-filled">
+                          {card.cta.text}
+                        </button>
+                      ) : (
+                        card.cta.text
+                      )}
+                    </a>
+                  </div>
+                )}
+              </div>
+              <div
+                className={`rounded-lg overflow-hidden order-${
+                  card.style === "text-start" ? "2" : "1"
+                }`}
+              >
+                {card.media.map((media: any, index: number) => {
+                  return (
+                    <img
+                      key={index}
+                      className="w-full h-full"
+                      src={`http://localhost:1337${media.medium.data.attributes.url}`}
+                    />
+                  );
+                })}
               </div>
             </div>
-          )
-        )}
-      </div>
+          </div>
+        )
+      )}
 
+      {/* dynamic zone */}
       <div className="m-4">
         <div
           className={`grid grid-rows-${config.rows} grid-cols-${config.cols} grid-flow-${config.gridFlow} gap-8`}
@@ -126,54 +137,56 @@ export default async function Homepage({
         </div>
       </div>
 
-      <div className="m-4 bg-white p-6 lg:p-12 rounded-xl shadow-soft-48 overflow-hidden">
-        {homeData.data.attributes.HomepageBottomCards.map(
-          (card: any, index: number) => (
-            <div key={index}>
-              <div className="text-center">{card.title}</div>
-              <div className="grid lg:grid-cols-2 gap-8">
-                <div
-                  className={`flex flex-col gap-4 order-${
-                    card.style === "text-start" ? "1" : "2"
-                  }`}
-                >
-                  <h1>{card.heading}</h1>
-                  <h2>{card.subheading}</h2>
-                  <Markdown>{card.text}</Markdown>
-                  {card.cta && (
-                    <div className="mt-auto">
-                      <a href={card.cta.action}>
-                        {card.cta.type === "button" ? (
-                          <button className="btn btn-large btn-filled">
-                            {card.cta.text}
-                          </button>
-                        ) : (
-                          card.cta.text
-                        )}
-                      </a>
-                    </div>
-                  )}
-                </div>
-                <div
-                  className={`rounded-lg overflow-hidden order-${
-                    card.style === "text-start" ? "2" : "1"
-                  }`}
-                >
-                  {card.media.map((media: any, index: number) => {
-                    return (
-                      <img
-                        key={index}
-                        className="w-full h-full"
-                        src={`http://localhost:1337${media.medium.data.attributes.url}`}
-                      />
-                    );
-                  })}
-                </div>
+      {/* bottom cards */}
+      {homeData.data.attributes.HomepageBottomCards.map(
+        (card: any, index: number) => (
+          <div
+            key={index}
+            className="m-4 bg-white p-6 lg:p-12 rounded-xl shadow-soft-48 overflow-hidden"
+          >
+            <div className="text-center">{card.title}</div>
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div
+                className={`flex flex-col gap-4 order-${
+                  card.style === "text-start" ? "1" : "2"
+                }`}
+              >
+                <h1>{card.heading}</h1>
+                <h2>{card.subheading}</h2>
+                <Markdown>{card.text}</Markdown>
+                {card.cta && (
+                  <div className="mt-auto">
+                    <a href={card.cta.action}>
+                      {card.cta.type === "button" ? (
+                        <button className="btn btn-large btn-filled">
+                          {card.cta.text}
+                        </button>
+                      ) : (
+                        card.cta.text
+                      )}
+                    </a>
+                  </div>
+                )}
+              </div>
+              <div
+                className={`rounded-lg overflow-hidden order-${
+                  card.style === "text-start" ? "2" : "1"
+                }`}
+              >
+                {card.media.map((media: any, index: number) => {
+                  return (
+                    <img
+                      key={index}
+                      className="w-full h-full"
+                      src={`http://localhost:1337${media.medium.data.attributes.url}`}
+                    />
+                  );
+                })}
               </div>
             </div>
-          )
-        )}
-      </div>
+          </div>
+        )
+      )}
     </div>
   );
 }
