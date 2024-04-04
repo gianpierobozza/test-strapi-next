@@ -124,7 +124,16 @@ export interface PageElementsHomeHeader extends Schema.Component {
     slogan: Attribute.String;
     description: Attribute.String;
     homeCTA: Attribute.Component<'blocks.link'>;
-    style: Attribute.Enumeration<['justify', 'center', 'start', 'end']>;
+    style: Attribute.Enumeration<
+      [
+        'text-left',
+        'text-center',
+        'text-right',
+        'text-justify',
+        'text-start',
+        'text-end'
+      ]
+    >;
   };
 }
 

@@ -27,10 +27,12 @@
     "style": {
       "type": "enumeration",
       "enum": [
-        "justify",
-        "center",
-        "start",
-        "end"
+        "text-left",
+        "text-center",
+        "text-right",
+        "text-justify",
+        "text-start",
+        "text-end"
       ]
     }
   }
